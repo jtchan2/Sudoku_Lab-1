@@ -52,6 +52,8 @@ public class mySudoku{
 		}
 		return false;
 	}
+	// the Sudoku function absically runs sudoku where the method is a boolean return type such that if the puzzle is solvable, it will return a true if not it will return false
+	//Back tracking in this part is where the code when a number cant be filled, it reverts the number back to a zero and goes back to the for loop to loop through the other numbers tha could be used
 	public boolean sudoku(int [][] board){
 		//int row;
 		//int col;
@@ -62,14 +64,18 @@ public class mySudoku{
 		int row=coordinate[0];
 		int col=coordinate[1];
 		for(int i=1; i<10; i++){
+			//checks if nubmer for grid slot can be used
 			if(canPlace(board,row,col,i)==true){
 				board[row][col]=i;
-				if(sudoku(board)){
+				//if true place number and continue on to next grid coordinate
+				if(sudoku(board)==true){
 					return true;
 				}
+				//if number can not be placed in position, the previous slots nubmer is reverted back to zero
 				board[row][col]=0;
 			}
 		}
+		//it restarts nubmer elemination process for filling in the slot 
 		return false;
 	}
 
