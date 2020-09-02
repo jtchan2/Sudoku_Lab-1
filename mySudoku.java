@@ -78,28 +78,8 @@ public class mySudoku{
 		//it restarts nubmer elemination process for filling in the slot 
 		return false;
 	}
-
-	public static void main(String [] args){
-		int [][] board= new int[][] {{5,3,0,0,7,0,0,0,0},
-							{6,0,0,1,9,5,0,0,0}, {0,9,8,0,0,0,0,6,0},{8,0,0,0,6,0,0,0,3},{4,0,0,8,0,3,0,0,1},{7,0,0,0,2,0,0,0,6},{0,6,0,0,0,0,2,8,0},{0,0,0,4,1,9,0,0,5},{0,0,0,0,8,0,0,7,9}};
-		Scanner input= new Scanner(System.in);
-
-		//This prints out the board
+	public void printScreen(int [][] board){
 		for(int i=0; i<9; i++){
-			for(int j=0; j<9; j++){
-				if(j==8){
-					System.out.print(board[i][j]);
-					System.out.println();
-				}else{
-					System.out.print(board[i][j]);
-				}
-			}
-		}
-		mySudoku puzzle= new mySudoku();
-		if(puzzle.sudoku(board)==true){
-			System.out.println("puzzle is solved");
-			// correct visual of printing board
-			for(int i=0; i<9; i++){
 				for(int j=0; j<9; j++){
 					if(j==2||j==5){
 						System.out.print(board[i][j]);
@@ -118,6 +98,37 @@ public class mySudoku{
 					//System.out.println();
 				}
 			}
+	}
+
+	public static void main(String [] args){
+		int [][] board= new int[9][9];
+		//int [][] board= new int[][] {{5,3,0,0,7,0,0,0,0},
+							//{6,0,0,1,9,5,0,0,0}, {0,9,8,0,0,0,0,6,0},{8,0,0,0,6,0,0,0,3},{4,0,0,8,0,3,0,0,1},{7,0,0,0,2,0,0,0,6},{0,6,0,0,0,0,2,8,0},{0,0,0,4,1,9,0,0,5},{0,0,0,0,8,0,0,7,9}};
+		Scanner input= new Scanner(System.in);
+		System.out.println("Sudoku: The CODE");
+		System.out.println("Enter your own Sudoku puzzle!");
+		for(int row=0; row<board.length; row++){
+			for(int col=0; col<board.length; col++){
+				System.out.println("Enter a digits 1-9 and a 0 if you want the an empty space.");
+				System.out.println("What number for Row: "+(row+1)+" Column: "+(col+1));
+				int number= input.nextInt();
+				while(number>9||number<0){
+					System.out.println("Sorry only digits 1 to 9 and 0 for indicating blank spaces!");
+					number=input.nextInt();
+				}
+				board[row][col]=number;
+			}
+		}
+		
+
+		//This prints out the board
+		
+		mySudoku puzzle= new mySudoku();
+		puzzle.printScreen(board);
+		if(puzzle.sudoku(board)==true){
+			System.out.println("puzzle is solved");
+			// correct visual of printing board
+			puzzle.printScreen(board);
 		}else{
 			System.out.println("No answer");
 		}
