@@ -1,6 +1,6 @@
 import java.util.*;
 public class mySudoku{
-	//checks if row doesnt have the number (run time ~O(n))
+	//checks if row doesnt have the number 
 	public  boolean isRowClean(int [][]board, int row, int num){
 		for(int i=0; i<9; i++){
 			if(board[row][i]==num){
@@ -9,7 +9,7 @@ public class mySudoku{
 		}
 		return true;
 	}
-	//O(n)
+	//Checks if the column contains the number that will be inputed to sudoku grid, where if it doesnt reutrns true
 	public  boolean isColClean(int [][]board, int col, int num){
 		for(int i=0; i<9; i++){
 			if(board[i][col]==num){
@@ -60,8 +60,6 @@ public class mySudoku{
 	//Back tracking in this part is where the code when a number cant be filled, it reverts the number back to a zero and goes back to the for loop to loop through the other numbers tha could be used
 	//
 	public boolean sudoku(int [][] board){
-		//int row;
-		//int col;
 		int[] coordinate= isSpaceEmpty(board);
 		if(coordinate[0]==10){
 			return true;
@@ -119,7 +117,7 @@ public class mySudoku{
 				System.out.println("Enter a digits 1-9 and a 0 if you want the an empty space.");
 				System.out.println("What number for Row: "+(row+1)+" Column: "+(col+1));
 				int number= input.nextInt();
-				//While loop jsut cheecks if number inputed was a acceptable answer if not re runs until number is accepted 
+				//While loop just checks if number inputed was a acceptable answer if not re runs until number is accepted 
 				while(number>9||number<0){
 					System.out.println("Sorry only digits 1 to 9 and 0 for indicating blank spaces!");
 					number=input.nextInt();
