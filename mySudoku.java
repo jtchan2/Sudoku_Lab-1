@@ -137,7 +137,7 @@ public class mySudoku{
 			System.out.println();
 			puzzle.printScreen(board);
 		}else{
-			System.out.println("No answer");
+			System.out.println("No Solution to the puzzle");
 		}
 	}
 }
